@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <NoWarn>CS8604,CA2208,S3928,SA1633,SA1600,SA1101</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+        <AdditionalFiles Include="..\stylecop.json" Link="Properties\stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="NUnit" Version="4.3.1" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.5.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+    <PackageReference Include="Selenium.Support" Version="4.27.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.27.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpamCom.TestFramework.Business\EpamCom.TestFramework.Business.csproj" />
+    <ProjectReference Include="..\EpamCom.TestFramework.Core\EpamCom.TestFramework.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+</Project>
