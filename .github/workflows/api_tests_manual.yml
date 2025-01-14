@@ -1,38 +1,38 @@
 name: API test pipeline manual run
 
-on:  
+on:
   workflow_dispatch:
 
-jobs:  
-  build:  
-    name: Build and tests 
+jobs:
+  build:
+    name: Build and tests
     runs-on: ubuntu-latest
-        
-    steps: 
-    - name: Checkout code 
-      uses: actions/checkout@v2 
 
-    - name: Setup .NET 
-      uses: actions/setup-dotnet@v1 
-      with:  
-        dotnet-version: '8.0.x' 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Restore dependencies 
-      run: dotnet restore 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
       working-directory: ./api
 
-    - name: Build 
-      run: dotnet build --no-restore 
+    - name: Build
+      run: dotnet build --no-restore
       working-directory: ./api
 
     - name: Run tests
       id: test
       run: dotnet test --no-build
       working-directory: ./api
-      
+
     - name: Upload logs
       if: ${{always()}}
       uses: actions/upload-artifact@v4.6.0
       with:
         name: Logs_Api
-        path: EpamCom.TestFramework.Tests/Logs
+        path: api/JSONPlaceholder.TestFramework.Tests/Logs
